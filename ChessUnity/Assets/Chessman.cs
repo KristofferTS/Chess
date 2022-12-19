@@ -158,18 +158,16 @@ public class Chessman : MonoBehaviour
 
     public void initiateMoveplate()
     {
-        /*if (this.name == "white_queen")
-        {
-            linemoveplate(1, 0);
-            linemoveplate(0, 1);
-            linemoveplate(-1, 0);
-            linemoveplate(0, -1);
-        }*/
-
-
-
+        
         switch (this.name)
         {
+            case "black_queen":
+            case "white_queen":
+                queenmoveplate();
+                break;
+                    
+                 
+
             case "black_knight":
             case "white_knight":
                 Lmoveplate();
@@ -223,28 +221,46 @@ public class Chessman : MonoBehaviour
 
     }
 
+    public void queenmoveplate()
+    {
+        linemoveplate(1, 1);
+        linemoveplate(1, -1);
+        linemoveplate(-1, 1);
+        linemoveplate(-1, -1);
+        linemoveplate(1, 0);
+        linemoveplate(0, 1);
+        linemoveplate(-1, 0);
+        linemoveplate(0, -1);
+
+    }
+
+
+
+
+
+
     public void Lmoveplate()
     {
         pointmoveplate(xboard + 1, yboard + 2);
         pointmoveplate(xboard - 1, yboard + 2);
-        pointmoveplate(xboard - 1, yboard - 1);
-        pointmoveplate(xboard - 1, yboard - 0);
-        pointmoveplate(xboard - 1, yboard + 1);
-        pointmoveplate(xboard + 1, yboard - 1);
-        pointmoveplate(xboard + 1, yboard - 0);
-        pointmoveplate(xboard + 1, yboard + 1);
+        pointmoveplate(xboard + 1, yboard - 2);
+        pointmoveplate(xboard - 1, yboard - 2);
+        pointmoveplate(xboard + 2, yboard + 1);
+        pointmoveplate(xboard - 2, yboard + 1);
+        pointmoveplate(xboard + 2, yboard - 1);
+        pointmoveplate(xboard - 2, yboard - 1);
     }
 
     public void surroundmoveplate()
     {
         pointmoveplate(xboard, yboard + 1);
         pointmoveplate(xboard, yboard - 1);
-        pointmoveplate(xboard + 1, yboard -1);
-        pointmoveplate(xboard + 1, yboard + 2);
-        pointmoveplate(xboard + 1, yboard + 2);
-        pointmoveplate(xboard + 1, yboard + 2);
-        pointmoveplate(xboard + 1, yboard + 2);
-        pointmoveplate(xboard + 1, yboard + 2);
+        pointmoveplate(xboard + 1, yboard);
+        pointmoveplate(xboard - 1, yboard);
+        pointmoveplate(xboard + 1, yboard + 1);
+        pointmoveplate(xboard - 1, yboard + 1);
+        pointmoveplate(xboard + 1, yboard - 1);
+        pointmoveplate(xboard - 1, yboard - 1);
     }
 
     public void pointmoveplate(int x, int y)
